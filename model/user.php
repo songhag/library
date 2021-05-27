@@ -1,6 +1,6 @@
 <?php
-require_once "config.php";
-function insert_into_book_info($name,$type,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$user_name,$class,$grade)
+require_once "../config.php";
+function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$user_name,$class,$grade)
 {
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
@@ -28,7 +28,7 @@ function insert_into_book_info($name,$type,$age,$id_card,$gender,$create_time,$p
         }
     }
 }
-function select_book_info_by_id($id){
+function select_user($id){
     if ($GLOBALS["conn"]->connect_error){
         die("连接失败：".$GLOBALS["conn"]->connect_error);
     }
@@ -46,7 +46,7 @@ function select_book_info_by_id($id){
         }
     }
 }
-function update_book_info_by_id($info_key,$new_info,$id)
+function update_user_by_id($info_key,$new_info,$id)
 {
     if ($GLOBALS["conn"]->connect_error){
         die("连接失败：".$GLOBALS["conn"]->connect_error);
