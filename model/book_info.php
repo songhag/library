@@ -28,7 +28,7 @@ function select_book_info_by_id($id){
         die("连接失败：".$GLOBALS["conn"]->connect_error);
     }
     else{
-        $stmt= $GLOBALS["conn"]->prepare("SELECT * from class where id=?");
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from book_info where id=?");
         $stmt->bind_param("i", $i);
         $i=$id;
         $stmt->execute();
@@ -47,19 +47,20 @@ function update_book_info_by_id($info_key,$new_info,$id)
         die("连接失败：".$GLOBALS["conn"]->connect_error);
     }
     else{
-        $stmt= $GLOBALS["conn"]->prepare("update class set $info_key=? where id=?");
+        $stmt= $GLOBALS["conn"]->prepare("update book_info set $info_key=? where id=?");
         $y="s";
         if ($info_key=="state"||$info_key=="type"||$info_key=="updator")
         {
             $y="i";
         }
-        $stmt->bind_param($y.$y."sssss".$y, $key,$i);
+        $stmt->bind_param($y."i", $key,$i);
         $key=$new_info;
         $i=$id;
         $stmt->execute();
-        if ($GLOBALS["conn"]->affected_rows) {
+        if ($GLOBALS["conn"]->affected_rows){
             echo "更新成功";
-        } else {
+        }
+        else {
             echo "失败";
         }
     }

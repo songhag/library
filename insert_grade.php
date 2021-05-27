@@ -1,5 +1,5 @@
 <?php
-require_once "grade.php";
+require_once "model/grade.php";
 $n=$_GET['num'];
 for ($i=1;$i<$n;$i++)
 {

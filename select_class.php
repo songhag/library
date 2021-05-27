@@ -1,5 +1,5 @@
 <?php
-require_once "class(statement).php";
+require_once "class.php";
 require_once "grade.php";
 $get_information_of_class=select_class_by_id(6);
 $row = $get_information_of_class->fetch_assoc();
