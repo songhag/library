@@ -1,12 +1,14 @@
 <?php
-require_once "../config.php";
+error_log("99999");
 function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$user_name,$class,$grade)
 {
+    error_log("123123123");
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
-        $stmt = $GLOBALS["conn"]->prepare("insert into user(name,type,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,user_name,class,grade) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("iisisssiissii",$na,$ty,$ag,$id_ca,$ge,$cr,$pa,$up,$st,$au,$ph,$us,$cl);
+        $sql="insert into user(name,type,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,user_name,class,grade) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $stmt = $GLOBALS["conn"]->prepare($sql);
+        $stmt->bind_param("siisisssiissii",$na,$ty,$ag,$id_ca,$ge,$cr,$pa,$up,$st,$au,$ph,$us,$cl,$gr);
         $na=$name;
         $ty=$type;
         $ag=$age;

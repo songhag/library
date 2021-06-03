@@ -5,10 +5,20 @@ function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$cr
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
         $stmt = $GLOBALS["conn"]->prepare("insert into user_application(user_name,name,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,class,grade) values (?,?,?)");
-        $stmt->bind_param("siii", $a, $b, $c);
-        $a = $borrow_book_id;
-        $b = $state;
-        $c = $type;
+        $stmt->bind_param("ssisisssiisii", $a, $b, $c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m);
+        $a = $user_name;
+        $b = $name;
+        $c = $age;
+        $d = $id_card;
+        $e = $gender;
+        $f = $create_time;
+        $g = $password;
+        $h = $update_time;
+        $i = $state;
+        $j = $auditor;
+        $k = $phone_number;
+        $l = $class;
+        $m =$grade;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
             echo "输入成功";
@@ -42,7 +52,12 @@ function update_user_application_by_id($info_key,$new_info,$id)
     }
     else{
         $stmt= $GLOBALS["conn"]->prepare("update user_application set $info_key=? where id=?");
-        $stmt->bind_param("ii", $key,$i);
+        $y="s";
+        if ($info_key=="age"||$info_key=="gender"||$info_key=="state"||$info_key=="auditor"||$info_key=="class"||$info_key=="grade")
+        {
+            $y="i";
+        }
+        $stmt->bind_param($y."i", $key,$i);
         $key=$new_info;
         $i=$id;
         $stmt->execute();
