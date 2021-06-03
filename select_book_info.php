@@ -1,6 +1,6 @@
 <?php
-require_once "class.php";
-require_once "book_type.php";
+require_once "model/class.php";
+require_once "model/book_type.php";
 $get_information_of_class = select_class_by_id(1);
 $row = $get_information_of_class->fetch_assoc();
 $row_type = select_book_type_by_id($row["type"])->fetch_assoc();

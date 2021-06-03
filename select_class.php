@@ -1,6 +1,6 @@
 <?php
-require_once "class.php";
-require_once "grade.php";
+require_once "model/class.php";
+require_once "model/grade.php";
 $get_information_of_class=select_class_by_id(6);
 $row = $get_information_of_class->fetch_assoc();
 $row_grade=select_grade_by_id($row["grade"])->fetch_assoc();
