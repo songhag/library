@@ -1,0 +1,99 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+#head {
+    background-color:#009688;
+}
+#head2{
+    width: 90%;
+    margin: 0px auto;
+    overflow: hidden;
+    zoom: 1;
+}
+#left{
+    float: left;
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+}
+#right{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+#right a{
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+    margin-left: 50px;
+    float: right;
+}
+#box2{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+#main_box{
+    width: 78%;
+    margin: 0px auto;
+    margin-top: 90px;
+}
+#title2{
+    font-size: 35px;
+    font-weight: bold;
+    color: #00675b;
+}
+#panel{
+    margin-top: 50px;
+    overflow: hidden;
+    zoom: 1;
+}
+#panel a{
+    display: inline-block;
+    width: 220px;
+    border-radius: 20px;
+    border: none;
+    text-align: left;
+    font-size: 22px;
+    padding: 25px 15px;
+    outline: none;
+    overflow: hidden;
+    zoom: 1;
+    font-weight: bold;
+    line-height: 30px;
+    float: left;
+}
+#log_in{
+    margin-right: 50px;
+    background-color: #52c7b8;
+    color: white;
+}
+#register{
+    background-color: #bde0dc;
+    color: #00675b;
+}
+#panel a b{
+    float: right;
+}
+#box2 div{
+    width: 78%;
+    font-size: 12px;
+    margin: 0px auto;
+    line-height: 80px;
+}
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    background-image: url("../image/home/undraw_book_lover_mkck.svg");
+    background-repeat: no-repeat;
+    background-size: 40%;
+    background-position-x: 100%;
+    background-position-y: 100%;
+    background-color: #fafafa;
+}

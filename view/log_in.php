@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../content/log_in.css" type="text/css" rel="stylesheet">
+    <link href="../content/log_in/log_in.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <div id="main_box">
@@ -34,5 +34,5 @@
         <p>©2021 图书管理系统，保留所有权</p>
     </div>
 </body>
-<script src="../content/log_in.js"></script>
+<script src="../content/log_in/log_in.js"></script>
 </html>

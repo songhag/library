@@ -4,7 +4,7 @@ function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$cr
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
-        $stmt = $GLOBALS["conn"]->prepare("insert into user_application(user_name,name,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,class,grade) values (?,?,?)");
+        $stmt = $GLOBALS["conn"]->prepare("insert into user_application(user_name,name,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,class,grade) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $stmt->bind_param("ssisisssiisii", $a, $b, $c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m);
         $a = $user_name;
         $b = $name;
@@ -21,19 +21,24 @@ function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$cr
         $m =$grade;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
-            echo "输入成功";
+            return "输入成功";
         } else {
-            echo "失败";
+            return "失败";
         }
     }
 }
-function select_user_application_by_id($id){
+function select_user_application_by_paramiter($para,$id){
     if ($GLOBALS["conn"]->connect_error){
         die("连接失败：".$GLOBALS["conn"]->connect_error);
     }
     else{
-        $stmt= $GLOBALS["conn"]->prepare("SELECT * from user_application where id=?");
-        $stmt->bind_param("i", $i);
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from user_application where $para=?");
+        $x="i";
+        if($para=="id_card")
+        {
+            $x="s";
+        }
+        $stmt->bind_param("$x", $i);
         $i=$id;
         $stmt->execute();
         if (!$GLOBALS["conn"]->error)
