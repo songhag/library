@@ -47,9 +47,14 @@
 }
 #form{
     float: left;
-    width: 350px;
+    width: 700px;
     overflow: hidden;
     zoom: 1;
+}
+.input_box2{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 .input_box{
     position: relative;
@@ -67,10 +72,24 @@
     width: 300px;
     padding: 20px 15px;
     border-radius: 15px;
-    margin: 3px 0px;
     border: 2px solid #2b998d;
     font-size: 16px;
     outline: none;
+}
+#age{
+    width: 126px;
+}
+#gender{
+    width: 160px;
+}
+#grade{
+    width: 160px;
+}
+#type{
+    width: 160px;
+}
+#class{
+    width: 334px;
 }
 #submit{
     width: 334px;
@@ -88,7 +107,7 @@
     line-height: 30px;
 }
 #form a{
-    float: left;
+    float: right;
 }
 .input_box{
     overflow: hidden;
@@ -109,8 +128,10 @@
     font-weight: bold;
 }
 #form a{
-    margin-top: 40px;
+    margin-top: 80px;
     color: #196b4d;
+    line-height: 30px;
+    margin-right: 25px;
 }
 #box2{
     position: absolute;
@@ -128,10 +149,10 @@ html{
 }
 body{
     min-height: 100%;
-    background-image: url("../image/log_in/undraw_Sign_in_re_o58h.svg");
+    background-image: url("../image/register/undraw_Access_account_re_8spm.svg");
     background-repeat: no-repeat;
-    background-size: 50%;
+    background-size: 40%;
     background-position-x: 100%;
-    background-position-y: 85%;
+    background-position-y: 99%;
     background-color: #fafafa;
 }

@@ -1,11 +1,3 @@
-var a=window.innerHeight;
-var b=document.getElementById("main_box");
-b.style.marginTop=(a-b.clientHeight)/2+"px";
-window.onresize = function(){
-    var a=window.innerHeight;
-    var b=document.getElementById("main_box");
-    b.style.marginTop=(a-b.clientHeight)/2+"px";
-}
 var e=document.getElementById("main_box");
 var d=e.getElementsByTagName("span");
 function input_bc(f)
