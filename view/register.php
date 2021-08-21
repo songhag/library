@@ -1,9 +1,16 @@
+<?php
+require_once "../Controller/ResisterController.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="../content/register/register.css" type="text/css" rel="stylesheet">
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    </script>
+    <script src="../content/register/register.js"></script>
+
 </head>
 <body>
 <div id="head">
@@ -21,7 +28,7 @@
     <div id="log_in">
         注册
     </div>
-    <form id="form" action="../insert_user.php" method="post">
+    <form id="form" action="../Controller/ResisterController.php" method="post">
         <div class="input_box2">
             <div class="input_box">
                 <span>用户名</span>
@@ -73,44 +80,33 @@
         <div class="input_box2">
             <div class="input_box">
                 <span>类型</span>
-                <select id="type" name="type" class="text" onchange="select_bc(this)">
-                    <option value="0">--请选择职业--</option>
-                    <option value="1">学生</option>
-                    <option value="2">老师</option>
-                    <option value="3">许丹阳</option>
-                </select>
+                <?php
+                echo get_type_list();
+                ?>
+<!--                <select id="type" name="type" class="text" onchange="select_bc(this)">-->
+<!--                    <option value="0">--请选择职业--</option>-->
+<!--                    <option value="1">学生</option>-->
+<!--                    <option value="2">老师</option>-->
+<!--                    <option value="3">许丹阳</option>-->
+<!--                </select>-->
                 <!--                <input id="type" type="text" value="" name="type" placeholder="类型" class="text" oninput="input_bc(this)" data="10">-->
             </div>
         </div>
         <div class="input_box2">
-            <div class="input_box">
+            <div class="input_box" >
                 <span>年级</span>
-                <select id="grade" name="grade" class="text" onchange="select_bc(this)">
-                    <option value="0">--请选择年级--</option>
-                    <option value="1">一年级</option>
-                    <option value="2">二年级</option>
-                    <option value="3">三年级</option>
-                    <option value="4">四年级</option>
-                    <option value="5">五年级</option>
-                    <option value="6">六年级</option>
-                    <option value="7">七年级</option>
-                    <option value="8">八年级</option>
-                    <option value="9">九年级</option>
-                </select>
+                <?php
+                echo get_name_list();
+                ?>
 <!--                <input id="grade" type="text" value="" name="grade" placeholder="年级" class="text" oninput="input_bc(this)" data="9">-->
             </div>
         </div>
         <div class="input_box2">
             <div class="input_box">
                 <span>班级</span>
-                <select id="class" name="class" class="text" onchange="select_bc(this)">
-                    <option value="0">--请选择班级--</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
+                <?php
+                echo get_class_name_list();
+                ?>
                 <!--                <input id="class" type="text" value="" name="class" placeholder="班级" class="text" oninput="input_bc(this)" data="7">-->
             </div>
         </div>
@@ -118,7 +114,7 @@
         <div class="input_box2">
             <div id="submit1">
                 <span>></span>
-                <input type="submit" value="登录" id="submit">
+                <input type="submit" value="注册" id="submit">
             </div>
         </div>
         <a href="#">已有账号了？前往登录</a>
@@ -129,6 +125,6 @@
         ©2021 图书管理系统，保留所有权
     </div>
 </div>
+
 </body>
-<script src="../content/register/register.js"></script>
 </html>

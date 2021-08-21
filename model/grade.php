@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require_once "../config.php";
 function insert_into_grade($name)
 {
     if ($GLOBALS["conn"]->connect_error) {
@@ -31,6 +31,20 @@ function select_grade_by_id($id){
         }
         else{
             echo $GLOBALS["conn"]->error;
+        }
+    }
+}
+function select_grade()
+{
+    if ($GLOBALS["conn"]->connect_error) {
+        die("连接失败：" . $GLOBALS["conn"]->connect_error);
+    } else {
+        $stmt = $GLOBALS["conn"]->prepare("SELECT * from grade");
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error) {
+            return [1,$stmt->get_result()];
+        } else {
+            return [2,$GLOBALS["conn"]->error];
         }
     }
 }

@@ -18,11 +18,13 @@
 </div>
 <div id="main_box">
     <a href="#" id="home"><b><</b> 首页</a>
+    <div style="clear: both"></div>
     <div id="select_type">
         <label id="audit_title">
             账户审核
         </label>
     </div>
+    <div style="clear: both"></div>
     <div id="user_info">
         <div id="user_info2">
             <div class="list_1">

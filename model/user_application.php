@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require_once "../config.php";
 function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$class,$grade){
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
