@@ -10,6 +10,10 @@ if (isset($_POST["username"])&&isset($_POST["name"]))
     if(check_application()){
         insert_into_application();
     }
+    else
+    {
+        echo"已注册";
+    }
 }
 
 if (isset($_POST["gradeId"])){
@@ -18,30 +22,30 @@ if (isset($_POST["gradeId"])){
 }
 
 function insert_into_application(){
-    $a=$_POST['user_name'];
+    $a=$_POST['username'];
     $b=$_POST['name'];
     $c=$_POST['age'];
-    $d=$_POST['id_card'];
+    $d=$_POST['idCard'];
     $e=$_POST['gender'];
     $f= date("Y-m-d H:i:s",getdate()[0]);
     $g=$_POST['password'];
     $h= date("Y-m-d H:i:s",getdate()[0]);
-    $i=$_POST['state'];
+    $i=0;
     $j=$_POST['auditor'];
-    $k=$_POST['phone_number'];
+    $k=$_POST['phoneNumber'];
     $l=$_POST['class'];
     $m=$_POST['grade'];
     $isSuccess = insert_into_user_application($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m);
     if ($isSuccess == "失败") {
-        echo "shibai";
+        echo "注册失败";
     }
     else{
-        echo "chenggong";
+        echo "注册成功";
     }
 }
 function check_application(){
     date_default_timezone_set('Asia/ShangHai');
-    $data=select_user_application_by_paramiter("id_card",$_POST['id_card']);
+    $data=select_user_application_by_paramiter("id_card",$_POST['idCard']);
     $flag = true;
     //print_r($data);
     for ($i=0;$i<($data->num_rows);$i++)

@@ -4,7 +4,7 @@ function select_bc(f)
     console.log(data);
     var parent = f.parentElement;
     var span = parent.getElementsByTagName("span")[0];
-    if(data==0)
+    if(data==2)
     {
         span.style.display="none";
     }
@@ -12,4 +12,14 @@ function select_bc(f)
         span.style.display="block";
     }
     // console.log(f.value);
+
+    var data = f.value;
+    $.ajax({
+        url:"../Controller/audit_controller.php",
+        type:"POST",
+        data:"state="+data,
+        success:function(data) {
+            $("#list_box").html(data);
+        }
+    })
 }

@@ -28,10 +28,18 @@ $(document).ready(function(){
             url:"../Controller/ResisterController.php",
             type:"POST",
             data:data,
-            success:function(message){
-
+            success:function(message) {
+                if (message == "注册成功") {
+                    alert(message);
+                    var url_last = "http://"+window.location.host+"/library/view/register_success.php"
+                    window.location.href = url_last;
+                } else {
+                    alert(message);
+                }
             }
         })
+        return false;
+
     })
 
 
@@ -50,7 +58,6 @@ function input_bc(f)
 }
 function select_bc(f)
 {
-    console.log(f.id);
     if (f.id == "grade"){
         var grade_val = f.value;
         $.ajax({
@@ -72,7 +79,6 @@ function select_bc(f)
     else{
         span.style.display="block";
     }
-
     // console.log(f.value);
 }
 
