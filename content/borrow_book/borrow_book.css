@@ -33,23 +33,40 @@
     float: right;
 }
 #main_box{
-    width: 78%;
+    width: 40%;
     margin: 0px auto;
-    margin-top: 90px;
-    overflow: hidden;
-    zoom: 1;
+    margin-top: 60px;
+    position: relative;
 }
-#log_in{
-    font-size: 35px;
-    font-weight: bold;
+.home{
+    font-size: 16px;
     color: #00675b;
-    margin-bottom: 45px;
+    float: left;
+    width: 52px;
+    padding: 0px 0px 5px 0px;
+}
+.home b{
+    font-size: 20px;
+    font-weight: 900;
+}
+.title2{
+    color: #00675b;
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 40px;
 }
 #form{
-    float: left;
-    width: 350px;
+    position: relative;
+    width: 100%;
     overflow: hidden;
     zoom: 1;
+
+}
+.input_box2{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    width: 100%;
 }
 .input_box{
     position: relative;
@@ -64,16 +81,15 @@
 }
 .text{
     float: left;
-    width: 300px;
-    padding: 20px 15px;
+    width: 95%;
+    padding: 20px 2%;
     border-radius: 15px;
-    margin: 3px 0px;
     border: 2px solid #2b998d;
     font-size: 16px;
     outline: none;
 }
 #submit{
-    width: 334px;
+    width: 99%;
     padding: 20px 15px;
     margin-top: 60px;
     float: left;
@@ -86,13 +102,6 @@
     outline: none;
     border: none;
     line-height: 30px;
-}
-#form a{
-    float: left;
-}
-.input_box{
-    overflow: hidden;
-    zoom: 1;
 }
 #submit1{
     overflow: hidden;
@@ -108,10 +117,27 @@
     color: white;
     font-weight: bold;
 }
-#form a{
-    margin-top: 40px;
-    color: #196b4d;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #box2{
     position: absolute;
     bottom: 0px;
@@ -128,10 +154,5 @@ html{
 }
 body{
     min-height: 100%;
-    background-image: url("../aaa_image/log_in/undraw_Sign_in_re_o58h.svg");
-    background-repeat: no-repeat;
-    background-size: 50%;
-    background-position-x: 100%;
-    background-position-y: 85%;
     background-color: #fafafa;
 }

@@ -1,14 +1,13 @@
 <?php
-error_log("99999");
-function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$user_name,$class,$grade)
+require_once "../config.php";
+function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$user_name,$class,$grade,$card_num)
 {
-    error_log("123123123");
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
-        $sql="insert into user(name,type,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,user_name,class,grade) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql="insert into user(name,type,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,user_name,class,grade,card_num) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $GLOBALS["conn"]->prepare($sql);
-        $stmt->bind_param("siisisssiissii",$na,$ty,$ag,$id_ca,$ge,$cr,$pa,$up,$st,$au,$ph,$us,$cl,$gr);
+        $stmt->bind_param("siisisssiissiis",$na,$ty,$ag,$id_ca,$ge,$cr,$pa,$up,$st,$au,$ph,$us,$cl,$gr,$ca);
         $na=$name;
         $ty=$type;
         $ag=$age;
@@ -23,11 +22,31 @@ function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$passwo
         $us=$user_name;
         $cl=$class;
         $gr=$grade;
+        $ca=$card_num;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
-            echo "输入成功";
+            return [1,"输入成功"];
         } else {
-            echo "失败";
+            echo [0,"失败"];
+        }
+    }
+}
+function select_user_by_name_password($username,$password){
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from user where user_name=? and password=?");
+        $stmt->bind_param("ss", $a,$b);
+        $a=$username;
+        $b=$password;
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [2,$GLOBALS["conn"]->error];
         }
     }
 }
@@ -57,7 +76,7 @@ function update_user_by_id($info_key,$new_info,$id)
     else{
         $stmt= $GLOBALS["conn"]->prepare("update user set $info_key=? where id=?");
         $y="i";
-        if ($info_key=="password"||$info_key=="phone_number"||$info_key=="user_name"||$info_key=="user_name"||$info_key=="update_time")
+        if ($info_key=="password"||$info_key=="phone_number"||$info_key=="user_name"||$info_key=="user_name"||$info_key=="update_time"||$info_key=="card_num")
         {
             $y="s";
         }
@@ -66,9 +85,9 @@ function update_user_by_id($info_key,$new_info,$id)
         $i=$id;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows){
-            echo "更新成功";
+            return [1,"更新成功"];
         } else {
-            echo "失败";
+            echo [0,"失败"];
         }
     }
 }

@@ -48,18 +48,23 @@
     color: #00675b;
 }
 #panel{
-    margin-top: 50px;
+    margin-top: 40px;
     overflow: hidden;
     zoom: 1;
 }
+.same_panel{
+    overflow: hidden;
+    zoom: 1;
+    width: 645px;
+}
 #panel a{
     display: inline-block;
-    width: 220px;
+    width: 150px;
     border-radius: 20px;
     border: none;
     text-align: left;
     font-size: 22px;
-    padding: 25px 15px;
+    padding: 20px 15px;
     outline: none;
     overflow: hidden;
     zoom: 1;
@@ -67,14 +72,23 @@
     line-height: 30px;
     float: left;
 }
-#log_in{
-    margin-right: 50px;
-    background-color: #52c7b8;
+#bottom_box{
+    margin-top: 50px;
+}
+.same_a{
+    margin-right: 35px;
+    margin-bottom: 30px;
+    background-color: #009688;
     color: white;
 }
-#register{
-    background-color: #bde0dc;
-    color: #00675b;
+.bottom_a{
+    color: #00665a;
+    background-color: #e6e6e6;
+}
+#panel #last_block{
+    float: right;
+    background-color: #e6e6e6;
+    color: #ff2929;
 }
 #panel a b{
     float: right;

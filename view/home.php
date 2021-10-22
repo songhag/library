@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_SESSION["user_id"])&&isset($_SESSION["name"]))
+{
+    unset($_SESSION["user_id"]);
+    unset($_SESSION["name"]);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +30,8 @@
         图书管理系统
     </div>
     <div id="panel">
-        <a id="log_in" href="#">登录<b>></b></a>
-        <a id="register" href="#">注册<b>></b></a>
+        <a id="log_in" href="log_in.php">登录<b>></b></a>
+        <a id="register" href="register.php">注册<b>></b></a>
     </div>
 </div>
 <div id="box2">

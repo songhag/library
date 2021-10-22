@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+#head {
+    background-color:#009688;
+}
+#head2{
+    width: 90%;
+    margin: 0px auto;
+    overflow: hidden;
+    zoom: 1;
+}
+#left{
+    float: left;
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+}
+#right{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+#right a{
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+    margin-left: 50px;
+    float: right;
+}
+#main_box{
+    width: 78%;
+    margin: 0px auto;
+    margin-top: 90px;
+    overflow: hidden;
+    zoom: 1;
+}
+#log_in{
+    font-size: 35px;
+    font-weight: bold;
+    color: #00675b;
+    margin-bottom: 45px;
+}
+#context{
+    font-size: 21px;
+    color: #4c4c4c;
+    font-weight: 540;
+}
+
+
+
+
+
+
+
+
+
+
+
+#box2{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+#box2 div{
+    width: 78%;
+    font-size: 12px;
+    margin: 0px auto;
+    line-height: 80px;
+}
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    background-image: url("../aaa_image/register_success/undraw_Confirmation_re_b6q5.svg");
+    background-repeat: no-repeat;
+    background-size: 55%;
+    background-position-x: 100%;
+    background-position-y: 99%;
+    background-color: #fafafa;
+}

@@ -1,11 +1,11 @@
 <?php
 require_once "../config.php";
-function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$class,$grade){
+function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$create_time,$password,$update_time,$state,$auditor,$phone_number,$class,$grade,$type,$card_num){
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
-        $stmt = $GLOBALS["conn"]->prepare("insert into user_application(user_name,name,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,class,grade) values (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssisisssiisii", $a, $b, $c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m);
+        $stmt = $GLOBALS["conn"]->prepare("insert into user_application(user_name,name,age,id_card,gender,create_time,password,update_time,state,auditor,phone_number,class,grade,type,card_num) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssisisssiisiiis", $a, $b, $c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o);
         $a = $user_name;
         $b = $name;
         $c = $age;
@@ -19,6 +19,8 @@ function insert_into_user_application($user_name,$name,$age,$id_card,$gender,$cr
         $k = $phone_number;
         $l = $class;
         $m =$grade;
+        $n=$type;
+        $o=$card_num;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
             return "输入成功";
@@ -58,7 +60,7 @@ function update_user_application_by_id($info_key,$new_info,$id)
     else{
         $stmt= $GLOBALS["conn"]->prepare("update user_application set $info_key=? where id=?");
         $y="s";
-        if ($info_key=="age"||$info_key=="gender"||$info_key=="state"||$info_key=="auditor"||$info_key=="class"||$info_key=="grade")
+        if ($info_key=="age"||$info_key=="gender"||$info_key=="state"||$info_key=="auditor"||$info_key=="class"||$info_key=="grade"||$info_key=="type")
         {
             $y="i";
         }
@@ -67,9 +69,9 @@ function update_user_application_by_id($info_key,$new_info,$id)
         $i=$id;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
-            echo "更新成功";
+            return [1,"更新成功"];
         } else {
-            echo "失败";
+            return [0,"失败"];
         }
     }
 }

@@ -35,22 +35,26 @@ function insert_into_application(){
     $k=$_POST['phoneNumber'];
     $l=$_POST['class'];
     $m=$_POST['grade'];
-    $isSuccess = insert_into_user_application($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m);
+    $n=$_POST['type'];
+    $o=$_POST['card_num'];
+    $isSuccess = insert_into_user_application($a,$b,$c,$d,$e,$f,$g,$h,$i,$j,$k,$l,$m,$n,$o);
     if ($isSuccess == "失败") {
         echo "注册失败";
     }
     else{
+        session_start();
+        $_SESSION["usernameApplication"] = $_POST['username'];
         echo "注册成功";
     }
 }
 function check_application(){
-    date_default_timezone_set('Asia/ShangHai');
     $data=select_user_application_by_paramiter("id_card",$_POST['idCard']);
-    $flag = true;
-    //print_r($data);
+
     for ($i=0;$i<($data->num_rows);$i++)
     {
         $row = $data->fetch_assoc();
+//        error_log($row["state"]);
+//        error_log($row["id_card"]);
         //echo $row["state"];
         if($row["state"]!="-1")
         {

@@ -1,5 +1,4 @@
 <?php
-error_log("oiioioioioioioio");
 $GLOBALS["servername"] = "localhost:3306";
 $GLOBALS["username"] = "root";
 $GLOBALS["password"] = "root";

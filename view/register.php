@@ -7,10 +7,9 @@ require_once "../Controller/ResisterController.php";
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="../content/register/register.css" type="text/css" rel="stylesheet">
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+    <script src="../content/aaa_JQ/jquery-1.8.0.js">
     </script>
     <script src="../content/register/register.js"></script>
-
 </head>
 <body>
 <div id="head">
@@ -32,7 +31,7 @@ require_once "../Controller/ResisterController.php";
         <div class="input_box2">
             <div class="input_box">
                 <span>用户名</span>
-                <input id="name" type="text" value="" name="name" placeholder="用户名" class="text" oninput="input_bc(this)" data="1">
+                <input id="name" type="text" value="" name="username" placeholder="用户名" class="text" oninput="input_bc(this)" data="1">
             </div>
         </div>
         <div class="input_box2">
@@ -44,7 +43,7 @@ require_once "../Controller/ResisterController.php";
         <div class="input_box2">
             <div class="input_box">
                 <span>真实姓名</span>
-                <input id="username" type="text" value="" name="username" placeholder="真实姓名" class="text" oninput="input_bc(this)" data="3">
+                <input id="username" type="text" value="" name="name" placeholder="真实姓名" class="text" oninput="input_bc(this)" data="3">
             </div>
         </div>
         <div class="input_box2">
@@ -110,6 +109,12 @@ require_once "../Controller/ResisterController.php";
                 <!--                <input id="class" type="text" value="" name="class" placeholder="班级" class="text" oninput="input_bc(this)" data="7">-->
             </div>
         </div>
+        <div class="input_box2">
+            <div class="input_box">
+                <span>校卡卡号</span>
+                <input id="card_num" type="text" value="" name="card_num" placeholder="校卡卡号" class="text" oninput="input_bc(this)" data="11">
+            </div>
+        </div>
         <div style="clear: both"></div>
         <div class="input_box2">
             <div id="submit1">
@@ -117,7 +122,7 @@ require_once "../Controller/ResisterController.php";
                 <input type="submit" value="注册" id="submit">
             </div>
         </div>
-        <a href="#">已有账号了？前往登录</a>
+        <a href="log_in.php">已有账号了？前往登录</a>
     </form>
 </div>
 <div id="box2">

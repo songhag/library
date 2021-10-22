@@ -1,7 +1,8 @@
 <?php
-require_once "config.php";
+require_once "../config.php";
 function insert_into_book_info($state,$type,$name,$isbn,$create_time,$publish_time,$author,$updator)
 {
+//    error_log("$state,$type,$name,$isbn,$create_time,$publish_time,$author,$updator");
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
@@ -16,10 +17,29 @@ function insert_into_book_info($state,$type,$name,$isbn,$create_time,$publish_ti
         $au=$author;
         $up=$updator;
         $stmt->execute();
-        if ($GLOBALS["conn"]->affected_rows) {
-            echo "输入成功";
+        if ($stmt->affected_rows) {
+            return "输入成功";
         } else {
-            echo "失败";
+            return "失败";
+        }
+    }
+}
+function select_book_info_by_isbn($isbn)
+{
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from book_info where isbn=?");
+        $stmt->bind_param("s", $i);
+        $i=$isbn;
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [0,$GLOBALS["conn"]->error];
         }
     }
 }
@@ -34,10 +54,10 @@ function select_book_info_by_id($id){
         $stmt->execute();
         if (!$GLOBALS["conn"]->error)
         {
-            return $stmt->get_result();
+            return [1,$stmt->get_result()];
         }
         else{
-            echo $GLOBALS["conn"]->error;
+            echo [0,$GLOBALS["conn"]->error];
         }
     }
 }

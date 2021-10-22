@@ -23,3 +23,10 @@ function select_bc(f)
         }
     })
 }
+$(document).ready(function (){
+    $(".list").click(function (){
+        var id=$(this).find("span[class=application_id]")[0].innerText;
+        var url_last = 'http://'+window.location.host+'/library/view/audit_user.php?id='+id;
+        window.location.href = url_last;
+    });
+})

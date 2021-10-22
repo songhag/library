@@ -79,6 +79,9 @@
 #age{
     width: 126px;
 }
+#card_num{
+    width: 126px;
+}
 #gender{
     width: 160px;
 }
@@ -89,7 +92,7 @@
     width: 160px;
 }
 #class{
-    width: 334px;
+    width: 160px;
 }
 #submit{
     width: 334px;
@@ -149,7 +152,7 @@ html{
 }
 body{
     min-height: 100%;
-    background-image: url("../image/register/undraw_Access_account_re_8spm.svg");
+    background-image: url("../aaa_image/register/undraw_Access_account_re_8spm.svg");
     background-repeat: no-repeat;
     background-size: 40%;
     background-position-x: 100%;

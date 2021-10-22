@@ -31,9 +31,21 @@ function get_audit_list_str($data){
            <span class='small_word'>状态</span>
 ";
         $state=$row["state"];
+        if ($state==-1)
+        {
+            $state="审核不通过";
+        }
+        elseif($state==0){
+            $state="待审核";
+        }
+        else{
+            $state="审核通过";
+        }
         $str.="$state";
+        $app_id=$row['id'];
         $str.="</span>
            <span class='go list_span'>></span>
+           <span style='display: none' class='application_id'>$app_id</span>
            </a>
 ";
     }

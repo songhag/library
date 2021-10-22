@@ -21,10 +21,10 @@
             <div id="log_in">
                 登录
             </div>
-            <form id="form" action="../insert_user.php" method="post">
+            <form id="form" action="../Controller/HomeController.php" method="post">
                 <div class="input_box">
                     <span>用户名</span>
-                    <input type="text" value="" name="name" placeholder="用户名" class="text" oninput="input_bc(this)" data="1">
+                    <input type="text" value="" name="username" placeholder="用户名" class="text" oninput="input_bc(this)" data="1">
                 </div>
                 <div class="input_box">
                     <span>密码</span>
@@ -34,7 +34,7 @@
                     <span>></span>
                     <input type="submit" value="登录" id="submit">
                 </div>
-                <a href="#">还没有账号？点击注册</a>
+                <a href="register.php">还没有账号？点击注册</a>
             </form>
     </div>
     <div id="box2">
@@ -44,4 +44,13 @@
     </div>
 </body>
 <script src="../content/log_in/log_in.js"></script>
+<?php
+session_start();
+if (isset($_SESSION["log_in_error"]))
+{
+    $message = $_SESSION["log_in_error"];
+    unset($_SESSION["log_in_error"]);
+    echo "<script>alert('$message')</script>";
+}
+?>
 </html>
