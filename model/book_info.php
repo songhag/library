@@ -57,7 +57,7 @@ function select_book_info_by_id($id){
             return [1,$stmt->get_result()];
         }
         else{
-            echo [0,$GLOBALS["conn"]->error];
+            return [0,$GLOBALS["conn"]->error];
         }
     }
 }
@@ -78,10 +78,10 @@ function update_book_info_by_id($info_key,$new_info,$id)
         $i=$id;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows){
-            echo "更新成功";
+            return [1,"更新成功"];
         }
         else {
-            echo "失败";
+            return [0,"失败"];
         }
     }
 }

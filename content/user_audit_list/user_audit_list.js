@@ -20,6 +20,11 @@ function select_bc(f)
         data:"state="+data,
         success:function(data) {
             $("#list_box").html(data);
+            $(".list").click(function (){
+                var id=$(this).find("span[class=application_id]")[0].innerText;
+                var url_last = 'http://'+window.location.host+'/library/view/audit_user.php?id='+id;
+                window.location.href = url_last;
+            });
         }
     })
 }

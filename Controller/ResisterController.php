@@ -31,7 +31,7 @@ function insert_into_application(){
     $g=$_POST['password'];
     $h= date("Y-m-d H:i:s",getdate()[0]);
     $i=0;
-    $j=$_POST['auditor'];
+    $j=0;//    $_POST["auditor"]
     $k=$_POST['phoneNumber'];
     $l=$_POST['class'];
     $m=$_POST['grade'];

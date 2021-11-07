@@ -25,7 +25,7 @@ $(document).ready(function (){
                 return false;
             }
         }
-        var data = $(this).serialize()+"&type=0";
+        var data = $(this).serialize()+"&type=1";
         $.ajax({
             url:"../Controller/book_controller.php",
             type:"POST",
@@ -33,7 +33,7 @@ $(document).ready(function (){
             success: function (message){
                 if (message=="登录成功"){
                     alert(message);
-                    var url_last = 'http://'+window.location.host+'/library/view/borrow_book_login.php';
+                    var url_last = 'http://'+window.location.host+'/library/view/return_book_login.php';
                     window.location.href = url_last;
                 }
                 else

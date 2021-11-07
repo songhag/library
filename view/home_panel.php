@@ -1,8 +1,9 @@
 <?php
 session_start();
-if (isset($_SESSION["user_name_2"])&&isset($_SESSION["name_2"])){
+if (isset($_SESSION["user_name_2"])&&isset($_SESSION["name_2"])&&isset($_SESSION["id_3"])){
     unset($_SESSION["user_name_2"]);
     unset($_SESSION["name_2"]);
+    unset($_SESSION["id_3"]);
 }
 if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))
 {
@@ -42,7 +43,7 @@ if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))
             {
                 echo '
                 <a class="same_a" href="borrow_book.php">借书<b>></b></a>
-                <a class="same_a" href="#">还书<b>></b></a>
+                <a class="same_a" href="return_book.php">还书<b>></b></a>
             ';
             }
             else{

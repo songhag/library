@@ -1,5 +1,5 @@
 <?php
-require_once "config.php";
+require_once "../config.php";
 function insert_into_borrow_book($book_info_id,$user_id,$start_time,$deadline,$state,$add_time)
 {
     if ($GLOBALS["conn"]->connect_error) {
@@ -14,10 +14,11 @@ function insert_into_borrow_book($book_info_id,$user_id,$start_time,$deadline,$s
         $e = $state;
         $f = $add_time;
         $stmt->execute();
-        if ($GLOBALS["conn"]->affected_rows) {
-            echo "输入成功";
+        error_log($stmt->error);
+        if ($stmt->affected_rows) {
+            return [1,"输入成功"];
         } else {
-            echo "失败";
+            return [0,"失败"];
         }
     }
 }

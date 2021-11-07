@@ -6,7 +6,7 @@ function get_audit_list_str($data){
     for ($i=0;$i<$rows_num;$i++)
     {
         $rows_num = $data->num_rows;
-        $str.= "<a class='list' href='#'>
+        $str.= "<a class='list'>
             <span class='name list_span'>
             <span class='small_word'>真实姓名</span>
 ";

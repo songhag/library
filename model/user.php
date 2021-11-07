@@ -27,7 +27,7 @@ function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$passwo
         if ($GLOBALS["conn"]->affected_rows) {
             return [1,"输入成功"];
         } else {
-            echo [0,"失败"];
+            return [0,"失败"];
         }
     }
 }
@@ -61,10 +61,10 @@ function select_user($id){
         $stmt->execute();
         if (!$GLOBALS["conn"]->error)
         {
-            return $stmt->get_result();
+            return [1,$stmt->get_result()];
         }
         else{
-            echo $GLOBALS["conn"]->error;
+            return [0,$GLOBALS["conn"]->error];
         }
     }
 }

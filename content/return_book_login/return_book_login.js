@@ -7,7 +7,7 @@ $(document).ready(function (){
             alert("未选择书籍")
             return false;
         }
-        var data= "search_id1=";
+        var data= "search_id3=";
         for (var i=1;i<a.length;i++)
         {
             data += parseInt($(a[i]).text())+",";
@@ -81,13 +81,13 @@ $(document).ready(function (){
                         var box=$("#box4");
                         var str='<div class="borrowed_list">' +
                             '                        <div class="row_1">' +
-                                                        b.length +
+                            b.length +
                             '                        </div>' +
                             '                        <div class="row_2">' +
-                                                        message[1] +
+                            message[1] +
                             '                        </div>' +
                             '                        <div class="row_3">' +
-                                                         message[2]+
+                            message[2]+
                             '                        </div>' +
                             '                        <div class="row_4 svg1">' +
                             '                            <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><title>trash fill</title><g class="nc-icon-wrapper"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path></g></svg>' +

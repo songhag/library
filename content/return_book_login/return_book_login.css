@@ -1,0 +1,286 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+#head {
+    background-color:#009688;
+}
+#head2{
+    width: 90%;
+    margin: 0px auto;
+    overflow: hidden;
+    zoom: 1;
+}
+#left{
+    float: left;
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+}
+#right{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+#right a{
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+    margin-left: 50px;
+    float: right;
+}
+#main_box{
+    width: 40%;
+    margin: 0px auto;
+    margin-top: 60px;
+    position: relative;
+}
+.home{
+    font-size: 16px;
+    color: #00675b;
+    float: left;
+    width: 52px;
+    padding: 0px 0px 5px 0px;
+}
+.home b{
+    font-size: 20px;
+    font-weight: 900;
+}
+.title2{
+    color: #00675b;
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 40px;
+}
+#form{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    zoom: 1;
+
+}
+.input_box2{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.input_box{
+    position: relative;
+}
+.input_box span{
+    display: none;
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    font-size: 8px;
+    color: #66b5ac;
+}
+.text{
+    float: left;
+    width: 95%;
+    padding: 20px 2%;
+    border-radius: 15px;
+    border: 2px solid #2b998d;
+    font-size: 16px;
+    outline: none;
+}
+#submit{
+    width: 99%;
+    padding: 20px 15px;
+    margin-top: 60px;
+    float: left;
+    border-radius: 15px;
+    text-align: left;
+    background-color: #52c6b7;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    line-height: 30px;
+}
+#submit1{
+    overflow: hidden;
+    zoom: 1;
+    position: relative;
+}
+#submit1 span{
+    font-size: 25px;
+    position: absolute;
+    right: 35px;
+    bottom: 20px;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
+
+
+#info{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+.name{
+    float: right;
+    width: 160px;
+}
+.box1{
+    position: relative;
+    padding-top: 18px;
+    text-align: right;
+    color: #005b4e;
+    font-weight: bold;
+    font-size: 17px;
+}
+.box1 span{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 13px;
+    color: grey;
+    font-weight: normal;
+}
+#box3{
+    width: 100%;
+    position: relative;
+}
+#form2{
+    overflow: hidden;
+    zoom: 1;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid black;
+    margin-bottom: 35px;
+}
+#id{
+    float: left;
+    width: 90%;
+    font-size: 18px;
+    border: none;
+    padding-bottom: 15px;
+    background-color: #fafafa;
+    outline: none;
+
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px #fafafa inset;
+}
+#submit2{
+    float: right;
+    width: 8%;
+    text-align: right;
+    background-color: #fafafa;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    outline: none;
+}
+#box4{
+    height: 300px;
+    overflow: scroll;
+}
+::-webkit-scrollbar{
+    width: 0px;
+}
+#borrowed_list{
+    position: relative;
+    width: 100%;
+}
+#title{
+    border-bottom: 1px solid black;
+    padding-top: 0px;
+}
+.borrowed_list{
+    overflow: hidden;
+    zoom: 1;
+    border-bottom: 1px solid #e3e3e3;
+    padding: 12px 0px;
+}
+
+.font_size{
+    font-weight: bold;
+    font-size: 16px;
+    color: #444444;
+}
+.row_1{
+    width: 11%;
+    float: left;
+    text-align: center;
+}
+.row_2{
+    width: 33%;
+    float: left;
+    text-align: left;
+}
+.row_3{
+    width: 45%;
+    float: left;
+    text-align: left;
+}
+.row_4{
+    width: 9%;
+    float: right;
+    text-align: right;
+}
+.row_4 svg{
+    fill: #ff3737;
+}
+#main_box2{
+    float: right;
+    margin-top: 20px;
+}
+#submit3{
+    position: relative;
+    width: 125px;
+    background-color: #00675b;
+    display: inline-block;
+    color: white;
+    padding: 16px 14px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+#main_box2 span{
+    position: absolute;
+    top: 20;
+    right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#box2{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+#box2 div{
+    width: 78%;
+    font-size: 12px;
+    margin: 0px auto;
+    line-height: 80px;
+}
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    background-color: #fafafa;
+}

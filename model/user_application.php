@@ -48,7 +48,7 @@ function select_user_application_by_paramiter($para,$id){
             return $stmt->get_result();
         }
         else{
-            echo $GLOBALS["conn"]->error;
+            return $GLOBALS["conn"]->error;
         }
     }
 }
