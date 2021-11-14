@@ -33,7 +33,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../content/return_book_login/return_book_login.css" type="text/css" rel="stylesheet">
+    <link href="../content/return_penalty/return_penalty.css" type="text/css" rel="stylesheet">
     <script src="../content/aaa_JQ/jquery-1.8.0.js"></script>
 </head>
 <body>
@@ -50,7 +50,7 @@ else{
 </div>
 <div id="main_box">
     <div id="main_box3">
-        <a href="home_panel.php" class="home"><b><</b> 首页</a>
+        <a href="home_panel.php" class="home"><b><</b> 上一步</a>
         <div id="info">
             <div class="name">
                 <div class="box1">
@@ -77,13 +77,9 @@ else{
         </div>
         <div style="clear: both"></div>
         <div class="title2">
-            还书
+            还书罚款
         </div>
         <div id="box3">
-            <form id="form2" method="post">
-                <input id="id" type="text" value="" name="search_id2" placeholder="书本编号">
-                <input type="submit" value="→" id="submit2">
-            </form>
             <div id="borrowed_list">
                 <div id="title" class="borrowed_list">
                     <div class="row_1 font_size">
@@ -174,10 +170,15 @@ else{
 
             </div>
             <div id="main_box2">
-                <a id="submit3">
-                    <span>></span>
-                    还书
-                </a>
+                <form id="select_type" action="../Controller/book_controller.php" method="post">
+                    <div id="box5">
+                        <div class="input_box">
+                            <span>密码</span>
+                            <input id="isbn" type="text" value="" name="password" placeholder="管理员密码" class="text" oninput="input_bc(this)" data="1">
+                        </div>
+                    </div>
+                    <input type="submit" value="确定" id="submit3">
+                </form>
             </div>
         </div>
     </div>
@@ -188,5 +189,5 @@ else{
     </div>
 </div>
 </body>
-<script src="../content/return_book_login/return_book_login.js"></script>
+<script src="../content/return_penalty/return_penalty.js"></script>
 </html>

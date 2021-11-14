@@ -33,10 +33,29 @@ function select_borrow_book_by_id($id){
         $stmt->execute();
         if (!$GLOBALS["conn"]->error)
         {
-            return $stmt->get_result();
+            return [1,$stmt->get_result()];
         }
         else{
-            echo $GLOBALS["conn"]->error;
+            return [0,$GLOBALS["conn"]->error];
+        }
+    }
+}
+function select_borrow_book_by_book_info_id_state($book_info_id,$state){
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from borrow_book where book_info_id=? and state =?");
+        $stmt->bind_param("ii", $i,$j);
+        $i=$book_info_id;
+        $j=$state;
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [0,$GLOBALS["conn"]->error];
         }
     }
 }
@@ -57,9 +76,9 @@ function update_borrow_book_by_id($info_key,$new_info,$id)
         $i=$id;
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows) {
-            echo "更新成功";
+            return [1,"更新成功"];
         } else {
-            echo "失败";
+            return [0,"失败"];
         }
     }
 }

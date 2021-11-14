@@ -1,13 +1,13 @@
 <?php
 require_once "../config.php";
-function insert_into_book_info($state,$type,$name,$isbn,$create_time,$publish_time,$author,$updator)
+function insert_into_book_info($state,$type,$name,$isbn,$create_time,$publish_time,$author,$updator,$price)
 {
 //    error_log("$state,$type,$name,$isbn,$create_time,$publish_time,$author,$updator");
     if ($GLOBALS["conn"]->connect_error) {
         die("连接失败：" . $GLOBALS["conn"]->connect_error);
     } else {
-        $stmt = $GLOBALS["conn"]->prepare("insert into book_info(state,type,name,isbn,create_time,publish_time,author,updator) values (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("iisssssi", $st, $ty, $na, $is, $cr, $pu, $au, $up);
+        $stmt = $GLOBALS["conn"]->prepare("insert into book_info(state,type,name,isbn,create_time,publish_time,author,updator,price) values (?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("iisssssid", $st, $ty, $na, $is, $cr, $pu, $au, $up,$pr);
         $st=$state;
         $ty=$type;
         $na=$name;
@@ -16,6 +16,7 @@ function insert_into_book_info($state,$type,$name,$isbn,$create_time,$publish_ti
         $pu=$publish_time;
         $au=$author;
         $up=$updator;
+        $pr=$price;
         $stmt->execute();
         if ($stmt->affected_rows) {
             return "输入成功";
@@ -73,9 +74,14 @@ function update_book_info_by_id($info_key,$new_info,$id)
         {
             $y="i";
         }
+        if ($info_key=="price")
+        {
+            $y="d";
+        }
         $stmt->bind_param($y."i", $key,$i);
         $key=$new_info;
         $i=$id;
+        error_log($stmt->error);
         $stmt->execute();
         if ($GLOBALS["conn"]->affected_rows){
             return [1,"更新成功"];

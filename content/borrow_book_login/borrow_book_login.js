@@ -29,10 +29,12 @@ $(document).ready(function (){
                 {
                     if (message[i]=="1")
                     {
-                        b+="第"+$(c[i+1]).text().trim()+"借阅成功\n";
+                        b+=$(c[i+1]).text().trim()+"借阅成功\n";
+                        var url_last = 'http://'+window.location.host+'/library/view/borrowed_success.php';
+                        window.location.href = url_last;
                     }
                     else {
-                        b+="第"+$(c[i+1]).text().trim()+"借阅失败\n";
+                        b+=$(c[i+1]).text().trim()+"借阅失败\n";
                     }
                 }
                 alert(b);

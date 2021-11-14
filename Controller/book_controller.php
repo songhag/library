@@ -14,7 +14,8 @@ if (isset($_POST["isbn"])&&isset($_POST["name"]))
     $g=$_POST['author'];
     session_start();
     $h=$_SESSION["user_id"];
-    insert_into_book_info1($a,$b,$c,$d,$e,$f,$g,$h);
+    $i=$_POST["price"];
+    insert_into_book_info1($a,$b,$c,$d,$e,$f,$g,$h,$i);
 }
 if (isset($_POST["username"])&&isset($_POST["password"])){
     $a=$_POST["username"];
@@ -29,6 +30,11 @@ if (isset($_POST["username"])&&isset($_POST["password"])){
         echo "登录失败";
     }
 }
+
+
+
+
+//借书检查
 if (isset($_POST["search_id"]))
 {
     $a=$_POST["search_id"];
@@ -44,6 +50,8 @@ if (isset($_POST["search_id1"]))
     $c=explode(",",$a);
     $b=0;
     $d="";
+    session_start();
+    $_SESSION["book_num"]=count($c);
     for ($i=0;$i<count($c);$i++)
     {
         $b=insert_borrowbook($c[$i]);
@@ -52,24 +60,26 @@ if (isset($_POST["search_id1"]))
     echo $d;
 }
 
+
+//还书检查
 if (isset($_POST["search_id2"]))
 {
     $a=$_POST["search_id2"];
-    $b=check_book($a);
+    $b=check_return_book($a);
     echo $b;
 }
 if (isset($_POST["search_id3"]))
 {
     $a=$_POST["search_id3"];
 //    error_log($a);
-    error_log($a);
-    error_log(54454656565);
+//    error_log($a);
+//    error_log(54454656565);
     $c=explode(",",$a);
     $b=0;
     $d="";
     for ($i=0;$i<count($c);$i++)
     {
-        $b=insert_borrowbook($c[$i]);
+        $b=update_borrowed_book($c[$i]);
         $d.=$b."∰";
     }
     echo $d;
@@ -107,7 +117,24 @@ function insert_borrowbook($id)
         return 0;
     }
 }
-
+function update_borrowed_book($id)
+{
+    $b=select_borrow_book_by_book_info_id_state($id,0);
+    if ($b[0]==1)
+    {
+        $c=$b[1]->fetch_array();
+        $a=update_borrow_book_by_id("state",1,$c["id"]);
+        if ($a[0]==1)
+        {
+            $d=update_book_info_by_id("state",0,$id);
+            if ($d[0]==1)
+            {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
 
 function check_book($id)
@@ -140,7 +167,45 @@ function check_book($id)
 
 function check_return_book($id)
 {
-
+    $a=select_borrow_book_by_book_info_id_state($id,0);
+    if ($a[0]==1)
+    {
+        $d=select_book_info_by_id($id);
+        if ($a[1]->num_rows==1)
+        {
+            $b=$a[1]->fetch_array();
+            session_start();
+            if ($b["user_id"]==$_SESSION["id_3"])
+            {
+                $e=$d[1]->fetch_array();
+                $c=$e["id"]."∰".$e["name"];
+                return "1"."∰".$c;
+            }
+            else{
+                return 2;
+            }
+        }
+        else{
+            if ($d[0]==1)
+            {
+                if ($d[1]->num_rows==1)
+                {
+                    return 0;
+                }
+                else{
+                    return 3;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+    }
+    else
+    {
+        return -1;
+    }
 }
 
 
@@ -171,8 +236,8 @@ function check_user($user_name,$password,$type)
         return 0;
     }
 }
-function insert_into_book_info1($a,$b,$c,$d,$e,$f,$g,$h){
-    $isSuccess = insert_into_book_info($a,$b,$c,$d,$e,$f,$g,$h);
+function insert_into_book_info1($a,$b,$c,$d,$e,$f,$g,$h,$i){
+    $isSuccess = insert_into_book_info($a,$b,$c,$d,$e,$f,$g,$h,$i);
     if ($isSuccess == "失败") {
         echo "加入失败";
     }

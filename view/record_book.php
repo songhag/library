@@ -47,15 +47,19 @@ else{
         <div id="input_box2">
             <div class="input_box">
                 <span>ISBN</span>
-                <input id="isbn" type="text" value="" name="isbn" placeholder="ISBN" class="text" oninput="input_bc(this)" data="2">
+                <input id="isbn" type="text" value="" name="isbn" placeholder="ISBN" class="text" oninput="input_bc(this)" data="1">
             </div>
             <div class="input_box">
                 <span>书名</span>
-                <input id="name" type="text" value="" name="name" placeholder="书名" class="text" oninput="input_bc(this)" data="3">
+                <input id="name" type="text" value="" name="name" placeholder="书名" class="text" oninput="input_bc(this)" data="2">
             </div>
             <div class="input_box">
                 <span>作者</span>
-                <input id="author" type="text" value="" name="author" placeholder="作者" class="text" oninput="input_bc(this)" data="4">
+                <input id="author" type="text" value="" name="author" placeholder="作者" class="text" oninput="input_bc(this)" data="3">
+            </div>
+            <div class="input_box">
+                <span>价格</span>
+                <input id="price" type="text" value="" name="price" placeholder="price" class="text" oninput="input_bc(this)" data="4">
             </div>
             <div class="input_box">
                 <span id="type_span">类别</span>

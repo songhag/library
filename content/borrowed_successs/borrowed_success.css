@@ -1,0 +1,123 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+#head {
+    background-color:#009688;
+}
+#head2{
+    width: 90%;
+    margin: 0px auto;
+    overflow: hidden;
+    zoom: 1;
+}
+#left{
+    float: left;
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+}
+#right{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+#right a{
+    color: white;
+    font-size: 16px;
+    line-height: 70px;
+    font-weight: 600;
+    margin-left: 50px;
+    float: right;
+}
+#main_box{
+    width: 40%;
+    margin: 0px auto;
+    margin-top: 60px;
+    position: relative;
+    overflow: hidden;
+    zoom: 1;
+}
+#main_box3{
+    overflow: hidden;
+    zoom: 1;
+}
+.home{
+    font-size: 16px;
+    color: #00675b;
+    float: left;
+    padding: 0px 0px 5px 0px;
+}
+.home b{
+    font-size: 20px;
+    font-weight: 900;
+}
+.title2{
+    color: #00675b;
+    font-size: 36px;
+    font-weight: bold;
+    padding-bottom: 40px;
+}
+
+
+
+
+
+
+
+
+#info{
+    float: right;
+    overflow: hidden;
+    zoom: 1;
+}
+.name{
+    float: right;
+    width: 160px;
+}
+.box1{
+    position: relative;
+    padding-top: 18px;
+    text-align: right;
+    color: #005b4e;
+    font-weight: bold;
+    font-size: 17px;
+}
+.box1 span{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 13px;
+    color: grey;
+    font-weight: normal;
+}
+
+
+
+#box2{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+#box2 div{
+    width: 78%;
+    font-size: 12px;
+    margin: 0px auto;
+    line-height: 80px;
+}
+#box3{
+    margin-top: 50px;
+}
+
+
+
+
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    background-color: #fafafa;
+}

@@ -29,10 +29,10 @@ $(document).ready(function (){
                 {
                     if (message[i]=="1")
                     {
-                        b+="第"+$(c[i+1]).text().trim()+"借阅成功\n";
+                        b+=$(c[i+1]).text().trim()+"还书成功\n";
                     }
                     else {
-                        b+="第"+$(c[i+1]).text().trim()+"借阅失败\n";
+                        b+=$(c[i+1]).text().trim()+"还书失败\n";
                     }
                 }
                 alert(b);
@@ -65,7 +65,11 @@ $(document).ready(function (){
                 }
                 else if (message[0]==0)
                 {
-                    alert("此编号不存在，请重新输入");
+                    alert("你未借阅，请重新输入");
+                }
+                else if (message[0]==3)
+                {
+                    alert("此书不存在，请重新输入");
                 }
                 else if (message[0]==1) {
                     var b = $(".row_2");
@@ -99,7 +103,7 @@ $(document).ready(function (){
                     }
                 }
                 else {
-                    alert("此书已被借出，请检查");
+                    alert("此书不是你的，请检查");
                 }
                 $("#id").val("");
 

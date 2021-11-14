@@ -25,6 +25,16 @@ else{
     window.location.href = url_last;
 </script>";
         }
+        else
+        {
+            if (!isset($_SESSION["book_num"])){
+                echo "<script>
+    alert('你没借书');
+    var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
+    window.location.href = url_last;
+</script>";
+            }
+        }
     }
 }
 ?>
@@ -33,7 +43,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../content/borrow_book_login/borrow_book_login.css" type="text/css" rel="stylesheet">
+    <link href="../content/borrowed_successs/borrowed_success.css" type="text/css" rel="stylesheet">
     <script src="../content/aaa_JQ/jquery-1.8.0.js"></script>
 </head>
 <body>
@@ -50,7 +60,6 @@ else{
 </div>
 <div id="main_box">
     <div id="main_box3">
-        <a href="home_panel.php" class="home"><b><</b> 首页</a>
         <div id="info">
             <div class="name">
                 <div class="box1">
@@ -74,17 +83,24 @@ else{
                     ?>
                 </div>
             </div>
+            <div style="clear: both"></div>
+            <div class="name" id="box3">
+                <div class="box1">
+                    <span>共借出</span>
+                    <?php
+                    if (isset($_SESSION["book_num"]))
+                    {
+                        echo $_SESSION["book_num"];
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
-        <div style="clear: both"></div>
+<!--        <div style="clear: both"></div>-->
         <div class="title2">
-            借书
+            借书成功！
         </div>
-        <div id="box3">
-            <form id="form2" method="post">
-                <input id="id" type="text" value="" name="search_id" placeholder="书本编号">
-                <input type="submit" value="→" id="submit2">
-            </form>
-        </div>
+        <a href="home_panel.php" class="home"><b><</b> 返回首页</a>
     </div>
 </div>
 <div id="box2">
@@ -93,5 +109,5 @@ else{
     </div>
 </div>
 </body>
-<script src="../content/borrow_book_login/borrow_book_login.js"></script>
+<script src="../content/borrowed_successs/borrowed_success.js"></script>
 </html>
