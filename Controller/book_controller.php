@@ -2,6 +2,7 @@
 require_once "../model/book_info.php";
 require_once "../model/user.php";
 require_once "../model/borrow_book.php";
+require_once "../Bussiness/book_bussiness.php";
 
 if (isset($_POST["isbn"])&&isset($_POST["name"]))
 {
@@ -68,23 +69,46 @@ if (isset($_POST["search_id2"]))
     $b=check_return_book($a);
     echo $b;
 }
-if (isset($_POST["search_id3"]))
+if (isset($_POST["search_id3"]))//修改成新的
 {
     $a=$_POST["search_id3"];
-//    error_log($a);
-//    error_log($a);
-//    error_log(54454656565);
-    $c=explode(",",$a);
-    $b=0;
-    $d="";
-    for ($i=0;$i<count($c);$i++)
-    {
-        $b=update_borrowed_book($c[$i]);
-        $d.=$b."∰";
-    }
-    echo $d;
+    session_start();
+    $_SESSION["search_id3"]=$a;
+    echo $a;
+//    $c=explode(",",$a);
+//    $b=0;
+//    $d="";
+//    for ($i=0;$i<count($c);$i++)
+//    {
+//        $b=update_borrowed_book($c[$i]);
+//        $d.=$b."∰";
+//    }
+//    echo $d;
 }
-
+//还书扣费检查
+if (isset($_POST["auditor_password"]))
+{
+    session_start();
+    $a=$_POST["auditor_password"];
+//    $g=$_POST["gain"];
+//    $h=explode("∰",$g);
+    $b=select_user_by_id_password($_SESSION["user_id"],$a);
+    if ($b[0]==1)
+    {
+        if ($b[1]->num_rows==1)
+        {
+            $e=$_SESSION["search_id3"];
+            $c=explode(",",$e);
+            $d="";
+            for ($i=0;$i<count($c);$i++)
+            {
+                $f=update_borrowed_book($c[$i]);//,$h[$i]
+                $d.=$f."∰";
+            }
+            echo $d;
+        }
+    }
+}
 
 
 
@@ -117,14 +141,27 @@ function insert_borrowbook($id)
         return 0;
     }
 }
-function update_borrowed_book($id)
+function update_borrowed_book($id)//,$gain
 {
     $b=select_borrow_book_by_book_info_id_state($id,0);
     if ($b[0]==1)
     {
         $c=$b[1]->fetch_array();
         $a=update_borrow_book_by_id("state",1,$c["id"]);
-        if ($a[0]==1)
+
+        $g=$c["deadline"];
+        $e=date("Y-m-d H:i:s",getdate()[0]);
+        $f=ceil((strtotime($e)-strtotime($g))/86400/30)*10;
+        if ($f<=0)
+        {
+            $f=0;
+        }
+        $h=update_borrow_book_by_id("gain",$f,$c["id"]);
+
+//        $e=update_borrow_book_by_id("gain",$gain,$c["id"]);
+//        error_log($a[0]);
+
+        if ($a[0]==1&&$h[0]==1)//&&$e[0]==1
         {
             $d=update_book_info_by_id("state",0,$id);
             if ($d[0]==1)
@@ -250,3 +287,33 @@ function insert_into_book_info1($a,$b,$c,$d,$e,$f,$g,$h,$i){
     }
 }
 
+function get_return_books()
+{
+    $b[0]="";
+    $d=1;
+    session_start();
+    $c=explode(",",$_SESSION["search_id3"]);
+    for ($i=0;$i<count($c);$i++)
+    {
+        $b[$i]=select_borrow_book_and_book_info_by_user_id_and_book_id($_SESSION["id_3"],$c[$i]);
+        if ($b[$i][0]==0)
+        {
+            $d=0;
+        }
+    }
+    if ($d==1)
+    {
+        $a=get_book_str2($b);
+    }
+    return $a;
+}
+
+function get_delay_book()
+{
+    $a=select_borrow_book_and_book_info_by_user_id_and_is_delay($_SESSION["user_id"]);
+    error_log($a[0]);
+    if ($a[0]==1)
+    {
+        return get_book_str3($a[1]);
+    }
+}

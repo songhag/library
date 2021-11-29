@@ -25,6 +25,17 @@ else{
     window.location.href = url_last;
 </script>";
         }
+        else
+        {
+            if(!isset($_SESSION["search_id3"]))
+            {
+                echo "<script>
+    alert('未还书');
+    var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
+    window.location.href = url_last;
+</script>";
+            }
+        }
     }
 }
 ?>
@@ -50,7 +61,7 @@ else{
 </div>
 <div id="main_box">
     <div id="main_box3">
-        <a href="home_panel.php" class="home"><b><</b> 上一步</a>
+        <a href="return_book_login.php" class="home"><b><</b> 上一步</a>
         <div id="info">
             <div class="name">
                 <div class="box1">
@@ -92,24 +103,31 @@ else{
                         书籍名称
                     </div>
                     <div class="row_4 font_size">
-                        管理
+                        归还日
+                    </div>
+                    <div class="row_5 font_size">
+                        罚款金额
                     </div>
                 </div>
                 <div id="box4">
-                    <!--                    <div class="borrowed_list">-->
-                    <!--                        <div class="row_1">-->
-                    <!--                            1-->
-                    <!--                        </div>-->
-                    <!--                        <div class="row_2">-->
-                    <!--                            1werty-->
-                    <!--                        </div>-->
-                    <!--                        <div class="row_3">-->
-                    <!--                            java:从入门到放弃-->
-                    <!--                        </div>-->
-                    <!--                        <div class="row_4">-->
-                    <!--                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><title>trash fill</title><g class="nc-icon-wrapper"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path></g></svg>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                    <?php
+                        require_once "../Controller/book_controller.php";
+                        echo get_return_books();
+                    ?>
+<!--                                        <div class="borrowed_list">-->
+<!--                                            <div class="row_1">-->
+<!--                                                1-->
+<!--                                            </div>-->
+<!--                                            <div class="row_2">-->
+<!--                                                1werty-->
+<!--                                            </div>-->
+<!--                                            <div class="row_3">-->
+<!--                                                java:从入门到放弃-->
+<!--                                            </div>-->
+<!--                                            <div class="row_4">-->
+<!--                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><title>trash fill</title><g class="nc-icon-wrapper"><path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path></g></svg>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                     <!--                    <div class="borrowed_list">-->
                     <!--                        <div class="row_1">-->
                     <!--                            1-->
@@ -174,7 +192,7 @@ else{
                     <div id="box5">
                         <div class="input_box">
                             <span>密码</span>
-                            <input id="isbn" type="text" value="" name="password" placeholder="管理员密码" class="text" oninput="input_bc(this)" data="1">
+                            <input id="isbn" type="text" value="" name="auditor_password" placeholder="管理员密码" class="text" oninput="input_bc(this)" data="1">
                         </div>
                     </div>
                     <input type="submit" value="确定" id="submit3">

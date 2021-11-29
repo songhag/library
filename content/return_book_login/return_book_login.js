@@ -19,23 +19,22 @@ $(document).ready(function (){
             type:"POST",
             data:data,
             success: function (message) {
-                console.log(message);
-                message=message.substr(0,message.length-1);
-                console.log(message);
-                message=message.split("∰");
-                console.log(message);
-                var b="";
-                for (var i=0;i<message.length;i++)
-                {
-                    if (message[i]=="1")
-                    {
-                        b+=$(c[i+1]).text().trim()+"还书成功\n";
-                    }
-                    else {
-                        b+=$(c[i+1]).text().trim()+"还书失败\n";
-                    }
-                }
-                alert(b);
+                var url_last = 'http://'+window.location.host+'/library/view/return_penalty.php';
+                window.location.href = url_last;
+                // message=message.substr(0,message.length-1);
+                // message=message.split("∰");
+                // var b="";
+                // for (var i=0;i<message.length;i++)
+                // {
+                //     if (message[i]=="1")
+                //     {
+                //         b+=$(c[i+1]).text().trim()+"还书成功\n";
+                //     }
+                //     else {
+                //         b+=$(c[i+1]).text().trim()+"还书失败\n";
+                //     }
+                // }
+                // alert(b);
             }
         })
         return false;

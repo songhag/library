@@ -13,36 +13,36 @@ $(document).ready(function (){
     })
     $("#select_type").submit(function (){//data 传密码，session传内容
         var c=$(".row_3");
-        var d=$(".row_5");
-        var data = $(this).serialize();
+        var checkedOfAll=$(".delay").prop("checked");
+        data="delayed_book_id";
+        for (var i=0; i<checkedOfAll.length;i++)
+        {
+            data+=checkedOfAll[i].getAttribute("data");
+            data+="∰";
+        }
+        data=data.substr(0,data.length-1);
         console.log(data);
-        // data+=",gain=";
-        //         // for (var i=1;i<d.length;i++)
-        //         // {
-        //         //     data+=$(d[i]).text().trim()+"∰";
-        //         // }
-        //         // data=data.substr(0,data.length-1);
         $.ajax({
             url:"../Controller/book_controller.php",
             type:"POST",
             data:data,
             success: function (message) {
-                message=message.substr(0,message.length-1);
-                message=message.split("∰");
-                var b="";
-                for (var i=0;i<message.length;i++)
-                {
-                    if (message[i]=="1")
-                    {
-                        b+=$(c[i+1]).text().trim()+"还书成功\n";
-                    }
-                    else {
-                        b+=$(c[i+1]).text().trim()+"还书失败\n";
-                    }
-                }
-                alert(b);
-                var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
-                window.location.href = url_last;
+                // message=message.substr(0,message.length-1);
+                // message=message.split("∰");
+                // var b="";
+                // for (var i=0;i<message.length;i++)
+                // {
+                //     if (message[i]=="1")
+                //     {
+                //         b+=$(c[i+1]).text().trim()+"还书成功\n";
+                //     }
+                //     else {
+                //         b+=$(c[i+1]).text().trim()+"还书失败\n";
+                //     }
+                // }
+                // alert(b);
+                // var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
+                // window.location.href = url_last;
             }
         })
         return false;

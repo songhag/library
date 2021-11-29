@@ -31,6 +31,26 @@ function insert_into_user($name,$type,$age,$id_card,$gender,$create_time,$passwo
         }
     }
 }
+function select_user_by_id_password($id,$password)
+{
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from user where id=? and password=?");
+        $stmt->bind_param("is", $a,$b);
+        $a=$id;
+        $b=$password;
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [2,$GLOBALS["conn"]->error];
+        }
+    }
+}
 function select_user_by_name_password($username,$password){
     if ($GLOBALS["conn"]->connect_error){
         die("连接失败：".$GLOBALS["conn"]->connect_error);

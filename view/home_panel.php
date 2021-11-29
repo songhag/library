@@ -1,8 +1,13 @@
 <?php
 session_start();
-if (isset($_SESSION["user_name_2"])&&isset($_SESSION["name_2"])&&isset($_SESSION["id_3"])){
+if (isset($_SESSION["user_name_2"])&&isset($_SESSION["name_2"])&&isset($_SESSION["id_2"])){
     unset($_SESSION["user_name_2"]);
     unset($_SESSION["name_2"]);
+    unset($_SESSION["id_2"]);
+}
+if (isset($_SESSION["user_name_3"])&&isset($_SESSION["name_3"])&&isset($_SESSION["id_3"])){
+    unset($_SESSION["user_name_3"]);
+    unset($_SESSION["name_3"]);
     unset($_SESSION["id_3"]);
 }
 if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))

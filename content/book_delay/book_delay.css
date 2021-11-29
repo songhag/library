@@ -156,6 +156,16 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
     width: 11%;
     float: left;
     text-align: left;
+    overflow: hidden;
+    zoom: 1;
+}
+.row_5 input{
+    width: 24px;
+    height: 24px;
+    float: left;
+}
+.row_5 input:checked::before{
+    background-color: #005f52;
 }
 .row_4 svg{
     fill: #ff3737;

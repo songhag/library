@@ -16,6 +16,7 @@ function log_in($username,$password)
             session_start();
             $_SESSION["user_id"]=$row["id"];
             $_SESSION["name"]=$row["name"];
+            $_SESSION["user_name"]=$row["user_name"];
             $_SESSION["type"]=$row["type"];
             echo "<script>
             var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
