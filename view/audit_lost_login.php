@@ -33,7 +33,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="../content/return_penalty/return_penalty.css" type="text/css" rel="stylesheet">
+    <link href="../content/audit_lost_login/audit_lost_login.css" type="text/css" rel="stylesheet">
     <script src="../content/aaa_JQ/jquery-1.8.0.js"></script>
 </head>
 <body>
@@ -196,5 +196,5 @@ else{
     </div>
 </div>
 </body>
-<script src="../content/return_penalty/return_penalty.js"></script>
+<script src="../content/audit_lost_login/audit_lost_login.js"></script>
 </html>
