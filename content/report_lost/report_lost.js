@@ -1,31 +1,20 @@
 $(document).ready(function (){
-    var e=document.getElementById("main_box2");
-    d=e.getElementsByTagName("span");
-
-    $("#form").submit(function() {
-        var inputList = $(this).find("input3");
-        for (var i = 0; i < inputList.length; i++) {
-            if (inputList[i].value == "") {
-                alert("请填写对应内容");
-                return false;
-            }
-        }
-    })
-    $("#select_type").submit(function (){//data 传密码，session传内容
+    $("#select_type").submit(function (){
         var c=$(".row_3");
-        var checkedOfAll=document.getElementsByClassName("delay");
+        var d=$(".row_5");
+        var checkedOfAll=document.getElementsByClassName("delay");//其实是lost
 
-        data="delayed_book_id=";
+        data="lost_book_id=";
         for (var i=0; i<checkedOfAll.length;i++)
         {
             if (checkedOfAll[i].checked==true)
             {
-                data+=checkedOfAll[i].getAttribute("data");
+                data+=checkedOfAll[i].getAttribute("data").trim();
                 data+="∰";
             }
         }
-        data=data.substr(0,data.length-1);
         console.log(data);
+        data=data.substr(0,data.length-1);
         $.ajax({
             url:"../Controller/book_controller.php",
             type:"POST",
@@ -38,10 +27,10 @@ $(document).ready(function (){
                 {
                     if (message[i]=="1")
                     {
-                        b+=$(c[i+1]).text().trim()+"延期成功\n";
+                        b+=$(c[i+1]).text().trim()+"挂失成功，等待管理员通过\n";
                     }
                     else {
-                        b+=$(c[i+1]).text().trim()+"延期失败\n";
+                        b+=$(c[i+1]).text().trim()+"挂失失败\n";
                     }
                 }
                 alert(b);
@@ -53,16 +42,3 @@ $(document).ready(function (){
         //console.log(a);
     })
 })
-function input_bc(f)
-{
-    var data = f.getAttribute("data");
-    if(f.value!="")
-    {
-        d[data-1].style.display="block";
-    }
-    else{
-        d[data-1].style.display="none";
-    }
-    // console.log(f.value);
-}
-

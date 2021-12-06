@@ -45,9 +45,6 @@ if (isset($_POST["search_id"]))
 if (isset($_POST["search_id1"]))
 {
     $a=$_POST["search_id1"];
-//    error_log($a);
-    error_log($a);
-    error_log(54454656565);
     $c=explode(",",$a);
     $b=0;
     $d="";
@@ -109,6 +106,28 @@ if (isset($_POST["auditor_password"]))
         }
     }
 }
+//延期
+if (isset($_POST["delayed_book_id"]))
+{
+    $a=$_POST["delayed_book_id"];
+    error_log($a);
+    error_log(888888888);
+    $b=explode("∰",$a);
+    error_log($b[0]);
+    $c=update_deadline_and_is_delay($b);
+    echo $c;
+}
+//挂失
+if (isset($_POST["lost_book_id"]))
+{
+    $a=$_POST["lost_book_id"];
+    error_log($a);
+    $b=explode("∰",$a);
+    $c=update_lost($b);
+    echo $c;
+}
+
+
 
 
 
@@ -118,6 +137,7 @@ if (isset($_POST["auditor_password"]))
 
 function insert_borrowbook($id)
 {
+    //if select_book_info 的id ！=-1才能执行。
     $a=update_book_info_by_id("state",1,$id);
     if ($a[0]==1)
     {
@@ -189,7 +209,13 @@ function check_book($id)
             }
             else
             {
-                return 2;
+                if ($b["state"]==-1)
+                {
+                    return 3;
+                }
+                else{
+                    return 2;
+                }
             }
         }
         else{
@@ -260,10 +286,15 @@ function check_user($user_name,$password,$type)
             $_SESSION["id_2"]=$b["id"];
             $_SESSION["name_2"]=$b["name"];
         }
-        else{
+        else if ($type==1){
             $_SESSION["user_name_3"]=$user_name;
             $_SESSION["id_3"]=$b["id"];
             $_SESSION["name_3"]=$b["name"];
+        }
+        else{
+            $_SESSION["user_name_4"]=$user_name;
+            $_SESSION["id_4"]=$b["id"];
+            $_SESSION["name_4"]=$b["name"];
         }
 
         return 1;
@@ -308,6 +339,16 @@ function get_return_books()
     return $a;
 }
 
+function get_lost_book()
+{
+    $a=select_borrow_book_and_book_info_by_user_id_and_state($_SESSION["id_4"]);
+    error_log($a[0]);
+    if ($a[0]==1)
+    {
+        return get_book_str4($a[1]);
+    }
+}
+
 function get_delay_book()
 {
     $a=select_borrow_book_and_book_info_by_user_id_and_is_delay($_SESSION["user_id"]);
@@ -316,4 +357,69 @@ function get_delay_book()
     {
         return get_book_str3($a[1]);
     }
+}
+
+function get_all_borrowed_book()
+{
+    $a=select_borrow_book_and_book_info_by_user_id($_SESSION["user_id"]);
+    if ($a[0]==1)
+    {
+        return get_book_str($a);
+    }
+}
+
+function get_all_book_setting_lost()
+{
+    $a=select_borrow_book_and_book_info_by_user_id($_SESSION["user_id"]);
+    if ($a[0]==1)
+    {
+        return get_book_str3($a[1]);
+    }
+}
+
+function update_deadline_and_is_delay($a)
+{
+    $g="";
+    for ($i=0;$i<sizeof($a);$i++)
+    {
+        error_log($a[$i]);
+        error_log(99999999999999);
+        $b=select_borrow_book_by_book_info_id_state($a[$i],0);
+        if ($b[0]==1)
+        {
+            $d=$b[1]->fetch_array();
+            error_log($d["id"]);
+            error_log(1122222222222222222222222);
+            $c=update_borrow_book_by_id("is_delay",1,$d["id"]);
+            $e=date("Y-m-d H:i:s",strtotime($d["deadline"])+2592000);
+            $f=update_borrow_book_by_id("deadline",$e,$d["id"]);
+            if ($c[0]==1&&$f[0]==1)
+            {
+                $g.="1∰";
+            }
+        }
+    }
+    return $g;
+}
+
+function update_lost($a)
+{
+    $g="";
+    for ($i=0;$i<sizeof($a);$i++)
+    {
+        $b=select_borrow_book_by_book_info_id_state($a[$i],0);
+        $h=select_book_info_by_id($a[$i]);
+        if ($b[0]==1)
+        {
+            $d=$b[1]->fetch_array();
+            $j=$h[1]->fetch_array();
+            $c=update_borrow_book_by_id("state",-1,$d["id"]);
+            $f=update_book_info_by_id("state",-1,$j["id"]);
+            if ($c[0]==1&&$f[0]==1)
+            {
+                $g.="1∰";
+            }
+        }
+    }
+    return $g;
 }

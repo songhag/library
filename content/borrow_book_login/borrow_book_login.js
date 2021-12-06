@@ -100,6 +100,9 @@ $(document).ready(function (){
                         addClick();
                     }
                 }
+                else if (message[0]==3){
+                    alert("此书已丢失");
+                }
                 else {
                     alert("此书已被借出，请检查");
                 }

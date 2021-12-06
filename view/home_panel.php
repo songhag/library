@@ -53,12 +53,12 @@ if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))
             }
             else{
                 echo '
-                <a class="same_a" href="#">查看借书<b>></b></a>
+                <a class="same_a" href="check_borrowed_book.php">查看借书<b>></b></a>
             ';
             }
             ?>
-            <a class="same_a" href="#">延期<b>></b></a>
-            <a class="same_a" href="#">挂失<b>></b></a>
+            <a class="same_a" href="book_delay.php">延期<b>></b></a>
+            <a class="same_a" href="report_lost.php">挂失<b>></b></a>
             <a class="same_a" id="last_block" href="home.php">登出<b>></b></a>
         </div>
         <?php
@@ -68,6 +68,7 @@ if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))
             <div class="same_panel" id="bottom_box">
             <a class="same_a bottom_a" href="record_book.php">录入书<b>></b></a>
             <a class="same_a bottom_a" href="user_audit_list.php">审核<b>></b></a>
+            <a class="same_a bottom_a" href="audit_lost.php">审核挂失<b>></b></a>
             </div>
             ';
         }

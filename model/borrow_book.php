@@ -60,6 +60,26 @@ function select_borrow_book_and_book_info_by_user_id($user_id)
         }
     }
 }
+function select_borrow_book_and_book_info_by_user_id_and_state($user_id)
+{
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("select a.id as ReturnId, b.price, deadline, start_time,name, a.book_info_id as bookId From borrow_book as a, book_info as b where a.book_info_id=b.id and a.user_id=? and a.state=-1 and b.state=-1;");
+        $stmt->bind_param("i", $i);
+        $i=$user_id;
+        $stmt->execute();
+        error_log($stmt->error);
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [0,$GLOBALS["conn"]->error];
+        }
+    }
+}
 function select_borrow_book_and_book_info_by_user_id_and_book_id($user_id,$book_id)
 {
     if ($GLOBALS["conn"]->connect_error){
@@ -139,8 +159,8 @@ function update_borrow_book_by_id($info_key,$new_info,$id)
         $stmt->bind_param($y."i", $key,$i);
         $key=$new_info;
         $i=$id;
-        error_log($stmt->error);
         $stmt->execute();
+        error_log($stmt->error);
         if ($GLOBALS["conn"]->affected_rows) {
             return [1,"更新成功"];
         } else {
