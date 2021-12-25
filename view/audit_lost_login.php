@@ -50,7 +50,7 @@ else{
 </div>
 <div id="main_box">
     <div id="main_box3">
-        <a href="return_book_login.php" class="home"><b><</b> 上一步</a>
+        <a href="audit_lost.php" class="home"><b><</b> 上一步</a>
         <div id="info">
             <div class="name">
                 <div class="box1">
@@ -181,7 +181,7 @@ else{
                     <div id="box5">
                         <div class="input_box">
                             <span>密码</span>
-                            <input id="isbn" type="text" value="" name="auditor_password" placeholder="管理员密码" class="text" oninput="input_bc(this)" data="1">
+                            <input id="isbn" type="text" value="" name="auditor_password_lost" placeholder="管理员密码" class="text" oninput="input_bc(this)" data="1">
                         </div>
                     </div>
                     <input type="submit" value="确定" id="submit3">

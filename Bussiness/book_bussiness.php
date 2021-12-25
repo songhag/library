@@ -138,6 +138,8 @@ function get_book_str2($a)
 function get_book_str4($a)
 {
     $str='';
+    session_start();
+    $_SESSION["search_id4"]="";
     for ($i=0;$i<$a->num_rows;$i++)
     {
         $b=$a->fetch_array();
@@ -150,6 +152,7 @@ function get_book_str4($a)
         $str.='</div>
             <div class="row_2">';
         $str.=$b["bookId"];
+        $_SESSION["search_id4"].=$b["bookId"].",";
         $str.='</div>
             <div class="row_3">
         ';

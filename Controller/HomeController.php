@@ -3,6 +3,7 @@ require_once "../model/user.php";
 require_once "../model/user_application.php";
 require_once "../model/class.php";
 require_once "../model/grade.php";
+require_once "../model/borrow_book.php";
 if (isset($_POST["username"])&&isset($_POST["password"])){
     log_in($_POST["username"],$_POST["password"]);
 }
@@ -13,6 +14,7 @@ function log_in($username,$password)
     {
         if ($account[1]->num_rows==1){
             $row = $account[1]->fetch_array();
+            $abc=check_normal($row["id"]);
             session_start();
             $_SESSION["user_id"]=$row["id"];
             $_SESSION["name"]=$row["name"];
@@ -38,4 +40,34 @@ function log_in($username,$password)
             window.location.href = url_last;
 </script>";
     }
+}
+function check_normal($user_id)//逻辑问题
+{
+    $a=select_borrow_book_by_user_id($user_id);
+    $c=0;
+    if ($a[0]==1)
+    {
+        for ($i=0;$i<$a[1]->num_rows;$i++)
+        {
+            $b=$a[1]->fetch_array();
+            $d=$b["deadline"];
+            $e=date("Y-m-d H:i:s",getdate()[0]);
+            $f=strtotime($e)-strtotime($d);
+            if ($b["state"]==-1)
+            {
+                $c=1;
+                return 0;
+            }
+            if ($f<0)
+            {
+                update_user_by_id("state",-1,$user_id);
+                return 0;
+            }
+        }
+    }
+    if ($c==0)
+    {
+        update_user_by_id("state",1,$user_id);
+    }
+    return 1;
 }

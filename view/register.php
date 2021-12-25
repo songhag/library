@@ -37,7 +37,7 @@ require_once "../Controller/ResisterController.php";
         <div class="input_box2">
             <div class="input_box">
                 <span>密码</span>
-                <input id="password" type="text" value="" name="password" placeholder="密码" class="text" oninput="input_bc(this)" data="2">
+                <input id="password" type="text" value="" name="password" placeholder="密码" class="text" oninput="input_bc(this)" data="2" >
             </div>
         </div>
         <div class="input_box2">

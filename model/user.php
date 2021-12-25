@@ -107,7 +107,7 @@ function update_user_by_id($info_key,$new_info,$id)
         if ($GLOBALS["conn"]->affected_rows){
             return [1,"更新成功"];
         } else {
-            echo [0,"失败"];
+            return [0,"失败"];
         }
     }
 }

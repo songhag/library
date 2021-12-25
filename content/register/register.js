@@ -33,7 +33,8 @@ $(document).ready(function(){
                     alert(message);
                     var url_last = "http://"+window.location.host+"/library/view/register_success.php"
                     window.location.href = url_last;
-                } else {
+                }
+                else {
                     alert(message);
                 }
             }

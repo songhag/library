@@ -168,3 +168,21 @@ function update_borrow_book_by_id($info_key,$new_info,$id)
         }
     }
 }
+function select_borrow_book_by_user_id($user_id){
+    if ($GLOBALS["conn"]->connect_error){
+        die("连接失败：".$GLOBALS["conn"]->connect_error);
+    }
+    else{
+        $stmt= $GLOBALS["conn"]->prepare("SELECT * from borrow_book where user_id=?");
+        $stmt->bind_param("i", $i);
+        $i=$user_id;
+        $stmt->execute();
+        if (!$GLOBALS["conn"]->error)
+        {
+            return [1,$stmt->get_result()];
+        }
+        else{
+            return [0,$GLOBALS["conn"]->error];
+        }
+    }
+}

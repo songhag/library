@@ -27,8 +27,12 @@ if (isset($_POST["username"])&&isset($_POST["password"])){
     {
         echo "登录成功";
     }
-    else{
+    else if($c==0){
         echo "登录失败";
+    }
+    else
+    {
+        echo "你不能借书";
     }
 }
 
@@ -126,7 +130,29 @@ if (isset($_POST["lost_book_id"]))
     $c=update_lost($b);
     echo $c;
 }
-
+if (isset($_POST["auditor_password_lost"]))
+{
+    session_start();
+    $a=$_POST["auditor_password_lost"];
+    $b=select_user_by_id_password($_SESSION["user_id"],$a);
+    if ($b[0]==1)
+    {
+        if ($b[1]->num_rows==1)
+        {
+            $e=$_SESSION["search_id4"];
+            //去掉最后一位
+            $e=substr($e,0,strlen($e)-1);
+            $c=explode(",",$e);
+            $d="";
+            for ($i=0;$i<count($c);$i++)
+            {
+                $f=update_borrowed_book_2($c[$i]);
+                $d.=$f."∰";
+            }
+            echo $d;
+        }
+    }
+}
 
 
 
@@ -161,7 +187,7 @@ function insert_borrowbook($id)
         return 0;
     }
 }
-function update_borrowed_book($id)//,$gain
+function update_borrowed_book($id)
 {
     $b=select_borrow_book_by_book_info_id_state($id,0);
     if ($b[0]==1)
@@ -192,7 +218,27 @@ function update_borrowed_book($id)//,$gain
     }
     return 0;
 }
+function update_borrowed_book_2($id)
+{
+    $b=select_borrow_book_by_book_info_id_state($id,-1);
+    $l=select_book_info_by_id($id);
+    if ($b[0]==1&&$l[0]==1)
+    {
+        $c=$b[1]->fetch_array();
+        $a=update_borrow_book_by_id("state",1,$c["id"]);
+        $d=$l[1]->fetch_array();
+        $e=$d["price"];
+        $h=update_borrow_book_by_id("gain",$e,$c["id"]);
+        $i=update_user_by_id("state",1,$c["user_id"]);
+//        $e=update_borrow_book_by_id("gain",$gain,$c["id"]);
+//        error_log($a[0]);
 
+        if ($a[0]==1&&$h[0]==1)//&&$e[0]==1
+        {
+            return 1;
+        }
+    }
+}
 
 function check_book($id)
 {
@@ -282,9 +328,14 @@ function check_user($user_name,$password,$type)
         session_start();
         if ($type==0)
         {
+            if($b["state"]==-1)
+            {
+                return -1;
+            }
             $_SESSION["user_name_2"]=$user_name;
             $_SESSION["id_2"]=$b["id"];
             $_SESSION["name_2"]=$b["name"];
+
         }
         else if ($type==1){
             $_SESSION["user_name_3"]=$user_name;
@@ -413,6 +464,7 @@ function update_lost($a)
         {
             $d=$b[1]->fetch_array();
             $j=$h[1]->fetch_array();
+            $k=update_user_by_id("state",-1,$d["user_id"]);
             $c=update_borrow_book_by_id("state",-1,$d["id"]);
             $f=update_book_info_by_id("state",-1,$j["id"]);
             if ($c[0]==1&&$f[0]==1)

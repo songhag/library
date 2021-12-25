@@ -13,15 +13,8 @@ $(document).ready(function (){
     })
     $("#select_type").submit(function (){//data 传密码，session传内容
         var c=$(".row_3");
-        var d=$(".row_5");
         var data = $(this).serialize();
         console.log(data);
-        // data+=",gain=";
-        //         // for (var i=1;i<d.length;i++)
-        //         // {
-        //         //     data+=$(d[i]).text().trim()+"∰";
-        //         // }
-        //         // data=data.substr(0,data.length-1);
         $.ajax({
             url:"../Controller/book_controller.php",
             type:"POST",
@@ -34,10 +27,10 @@ $(document).ready(function (){
                 {
                     if (message[i]=="1")
                     {
-                        b+=$(c[i+1]).text().trim()+"还书成功\n";
+                        b+=$(c[i+1]).text().trim()+"挂失取消成功\n";
                     }
                     else {
-                        b+=$(c[i+1]).text().trim()+"还书失败\n";
+                        b+=$(c[i+1]).text().trim()+"挂失取消失败\n";
                     }
                 }
                 alert(b);
