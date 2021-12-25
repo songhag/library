@@ -1,4 +1,24 @@
 <?php
+session_start();
+if (!isset($_SESSION["user_id"])||!isset($_SESSION["name"]))
+{
+    echo "<script>
+    var url_last = 'http://'+window.location.host+'/library/view/log_in.php';
+    window.location.href = url_last;
+</script>";
+}
+else{
+    if ($_SESSION["type"]!=1)
+    {
+        echo "<script>
+    alert('你不是管理员');
+    var url_last = 'http://'+window.location.host+'/library/view/home_panel.php';
+    window.location.href = url_last;
+</script>";
+    }
+}
+?>
+<?php
 define('IN_CB', true);
 include('include/header.php');
 
@@ -16,7 +36,7 @@ $characters = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 
             <label for="checksum">Checksum</label>
         </div>
         <div class="value">
-            <?php echo getCheckboxHtml('checksum', $checksum, array('value' => 1)); ?>
+            <?php  echo getCheckboxHtml('checksum', $checksum, array('value' => 1)); ?>
         </div>
     </li>
 </ul>
